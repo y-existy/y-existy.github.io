@@ -7,7 +7,7 @@
     "postinstall": "tsd install",
     "clean": "find -E . -regex './app/.+\\.(js|map)$' -type f | xargs rm && rm -rf ./build",
     "pretest": "tsc",
-    "test": "istanbul cover _mocha -- ./app/test/*.test.js",
+    "test": "istanbul cover _mocha -- ./app/build/test/*.test.js",
     "posttest": "cd coverage && remap-istanbul -i coverage.json -o html-report -t html"
   },
   "author": "",

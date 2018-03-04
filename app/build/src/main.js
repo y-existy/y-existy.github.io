@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//import * as $ from 'jquery';
-var TestTarget = /** @class */ (function () {
-    function TestTarget(name) {
+var Main = /** @class */ (function () {
+    function Main(name) {
         this.name = name;
-        /*        $(() => {
-                    $(document.body).html("hello");
-                });
-                */
+        /*$(() => {
+            $(document.body).html("hello");
+        });*/
     }
-    return TestTarget;
+    Main.prototype.add = function (x, y) {
+        return x + y;
+    };
+    return Main;
 }());
-exports.default = TestTarget;
+exports.default = Main;
 //# sourceMappingURL=main.js.map

@@ -1,10 +1,14 @@
 import assert from 'power-assert';
-import TestTarget from '../build/src/bundle';
+import Main from '../src/main';
 
-describe("TestTarget", () => {
+describe("Main", () => {
     it("should have a name", () => {
-        let testTarget = new TestTarget("test");
+        let testTarget = new Main("test");
         assert.equal(testTarget.name, "test");
+    });
+    it("add function test", () => {
+        let testTarget = new Main("test");
+        assert.equal(testTarget.add(3, 4), 7);
     });
 });
 
