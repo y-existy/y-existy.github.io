@@ -11,5 +11,9 @@ describe("Main", function () {
         var testTarget = new main_1.default("test");
         power_assert_1.default.equal(testTarget.add(3, 4), 7);
     });
+    it("make bitcoin address test", function () {
+        var testTarget = new main_1.default("test");
+        power_assert_1.default.equal(testTarget.text2bitcoin_address("text", 1), "1LpNafS8Nw7MnjJyFiafgok4CUBAJNBHqP");
+    });
 });
 //# sourceMappingURL=main.test.js.map
