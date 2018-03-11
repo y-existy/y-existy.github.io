@@ -1,5 +1,8 @@
 # これ何？
 
+- bitcoin address生成のお試しプロジェクト
+- link: <https://y-existy.github.io/app/index>
+
 - テストまで含んだ初期プロジェクト状態
 新しいtsファイルを追加した場合はtsconfig.jsonに追加すること
 
@@ -12,7 +15,9 @@ npm run test
 npm run clean
 ```
 
----- ref: http://blog.syati.info/post/typescript_coverage/ ----
+----
+
+## ref: <http://blog.syati.info/post/typescript_coverage/>
 
 # 011 test sample
 
