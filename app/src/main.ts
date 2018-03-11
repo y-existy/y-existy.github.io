@@ -5,10 +5,8 @@ import * as jsSHA from 'jssha';
 export default class Main {
     public network = `livenet`;
 
-    constructor(public name){
-        /*$(() => {
-            $(document.body).html("hello");
-        });*/
+    constructor(){
+        this._initlisten();
     }
 
     private _makeKey(target, num){
@@ -37,14 +35,18 @@ export default class Main {
 
     public text2bitcoin_address(text, num){
         var key = this._makeKey(text, num);
-        return this._makeAddress(key);
+        return [key, this._makeAddress(key)];
     }
 
-    public add(x, y){
-        return x + y;
+    private _initlisten() :void{
+        var me = this;
+        $("#generate").on("click", function(event){
+            let key = $(".input_key").val();
+            let num = $(".input_num").val();
+            let [priv_key, address] = me.text2bitcoin_address(key, Number(num));
+            $(".address").val(address);
+            $(".priv_key").val(priv_key);
+        });
     }
 }
-
-
-
-
+var m = new Main();

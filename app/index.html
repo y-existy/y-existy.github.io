@@ -2,8 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <script src="build/bundle.js"></script>
+        <title>bitcoin address generate</title>
     </head>
     <body>
+        <tr>
+            <th>key</th>
+            <td><input type="text" class="input_key" value=""></td>
+        </tr>
+        <tr>
+            <th>num</th>
+            <td><input type="text" class="input_num" value=""></td>
+        </tr>
+        <input type="submit" id="generate" value="生成">
+        <br>
+        <textarea name="address" class="address" rows="4" cols="40">Bitcoin address</textarea>
+        <textarea name="priv_key" class="priv_key" rows="4" cols="40">Bitcoin private key</textarea>
+
+        <script type="text/javascript" src="build/src/bundle.js"></script>
     </body>
 </html>

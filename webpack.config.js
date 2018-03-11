@@ -1,3 +1,5 @@
+webpack = require('webpack');
+
 module.exports = {
     entry: './app/src/main.ts',
     output: {
