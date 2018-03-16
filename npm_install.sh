@@ -16,4 +16,10 @@ npm install jquery --save
 tsd install jquery --save
 
 ## test用
-npm install -g mocha istanbul remap-istanbul --save
+# npm install -g mocha istanbul remap-istanbul --save
+
+#phantomjs用
+sudo apt-get install fontconfig
+
+#test用モジュール群
+npm install -g karma karma-jasmine jasmine jasmine-core karma-phantomjs-launcher phantomjs-prebuilt
