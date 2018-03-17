@@ -1,5 +1,5 @@
 node_modules
-app/build/*
-!bundle.js
+app/**/*.js
+!app/src/bundle.js
 *js.map
 coverage

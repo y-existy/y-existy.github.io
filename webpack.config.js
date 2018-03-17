@@ -3,7 +3,7 @@ webpack = require('webpack');
 module.exports = {
     entry: './app/src/main.ts',
     output: {
-      filename: './app/build/src/bundle.js'
+      filename: './app/src/bundle.js'
     },
     resolve: {
       // Add `.ts` and `.tsx` as a resolvable extension.
