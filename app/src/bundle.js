@@ -39811,7 +39811,6 @@ var jsSHA = __webpack_require__(225);
 __webpack_require__(226);
 var Main = /** @class */ (function () {
     function Main() {
-        this.network = "livenet";
         this._initlisten();
     }
     Main.prototype._makeKey = function (target, num) {
@@ -39826,27 +39825,28 @@ var Main = /** @class */ (function () {
             return this._makeKey(hash, num - 1);
         }
     };
-    Main.prototype._makeAddress = function (privkey) {
+    Main.prototype._makeAddress = function (privkey, network) {
         // 公開鍵作成
-        var privateKey = new bitcore.PrivateKey(privkey, this.network);
+        var privateKey = new bitcore.PrivateKey(privkey, network);
         var publicKey = privateKey.toPublicKey();
         // bitcoin アドレス作成
         var pubKey = publicKey;
-        var publicKey = new bitcore.PublicKey(pubKey, this.network);
+        var publicKey = new bitcore.PublicKey(pubKey, network);
         var address = publicKey.toAddress();
         var str_address = address.toString();
         return str_address;
     };
-    Main.prototype.text2bitcoin_address = function (text, num) {
+    Main.prototype.text2bitcoin_address = function (text, num, network) {
         var key = this._makeKey(text, num);
-        return [key, this._makeAddress(key)];
+        return [key, this._makeAddress(key, network)];
     };
     Main.prototype._initlisten = function () {
         var me = this;
         $("#generate").on("click", function (event) {
             var key = $(".input_key").val();
             var num = $(".input_num").val();
-            var _a = me.text2bitcoin_address(key, Number(num)), priv_key = _a[0], address = _a[1];
+            var network = $('[name=network]').val();
+            var _a = me.text2bitcoin_address(key, Number(num), network), priv_key = _a[0], address = _a[1];
             $(".address").val(address);
             $(".priv_key").val(priv_key);
         });

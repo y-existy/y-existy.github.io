@@ -4,8 +4,6 @@ import * as jsSHA from 'jssha';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 export default class Main {
-    public network = `livenet`;
-
     constructor(){
         this._initlisten();
     }
@@ -21,22 +19,22 @@ export default class Main {
             return this._makeKey(hash, num - 1);
             }
         }
-    private _makeAddress(privkey){
+    private _makeAddress(privkey, network){
         // 公開鍵作成
-            var privateKey = new bitcore.PrivateKey(privkey, this.network);
+            var privateKey = new bitcore.PrivateKey(privkey, network);
             var publicKey = privateKey.toPublicKey();
 
         // bitcoin アドレス作成
             var pubKey = publicKey;
-            var publicKey = new bitcore.PublicKey(pubKey, this.network);
+            var publicKey = new bitcore.PublicKey(pubKey, network);
             var address = publicKey.toAddress();
             var str_address = address.toString();
             return str_address;
         }
 
-    public text2bitcoin_address(text, num){
+    public text2bitcoin_address(text, num, network){
         var key = this._makeKey(text, num);
-        return [key, this._makeAddress(key)];
+        return [key, this._makeAddress(key, network)];
     }
 
     private _initlisten() :void{
@@ -44,7 +42,8 @@ export default class Main {
         $("#generate").on("click", function(event){
             let key = $(".input_key").val();
             let num = $(".input_num").val();
-            let [priv_key, address] = me.text2bitcoin_address(key, Number(num));
+            let network = $('[name=network]').val();
+            let [priv_key, address] = me.text2bitcoin_address(key, Number(num), network);
             $(".address").val(address);
             $(".priv_key").val(priv_key);
         });
