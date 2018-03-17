@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 import * as bitcore from 'bitcore-lib';
 import * as jsSHA from 'jssha';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 export default class Main {
     public network = `livenet`;
