@@ -1,5 +1,14 @@
+/*
+使っているbitcoinライブラリーの説明：
+    Insight is a simple agent to perform queries to an Insight
+    blockchain explorer. The default servers are https://insight.bitpay.com
+    and  https://test-insight.bitpay.com, hosted by BitPay Inc.
+    You can (and we strongly suggest you do) run your own insight server.
+    For more information, head to https://github.com/bitpay/insight-api
+*/
 import * as $ from 'jquery';
 import * as bitcore from 'bitcore-lib';
+import * as explorers from 'bitcore-explorers';
 import * as jsSHA from 'jssha';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -36,7 +45,24 @@ export default class Main {
         var key = this._makeKey(text, num);
         return [key, this._makeAddress(key, network)];
     }
-
+/*
+    public check_asset(address, network){
+        //var insight = new explorers.Insight("https://test-insight.bitpay.com",network);
+        var insight = new explorers.Insight();
+        console.log(address);
+        insight.getUnspentUtxos(address, function(err, utxos) {
+            console.log("START");
+            if (err) {
+                console.log("ERROR:check_asset");
+                return "ERROR:check_asset"
+            } else {
+                console.log("utxos");
+                console.log(utxos);
+                return utxos;
+            }
+        });
+    }
+*/
     private _initlisten() :void{
         var me = this;
         $("#generate").on("click", function(event){
