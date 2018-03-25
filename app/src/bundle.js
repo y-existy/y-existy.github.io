@@ -39805,13 +39805,20 @@ module.exports = HDPublicKey;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+/*
+使っているbitcoinライブラリーの説明：
+    Insight is a simple agent to perform queries to an Insight
+    blockchain explorer. The default servers are https://insight.bitpay.com
+    and  https://test-insight.bitpay.com, hosted by BitPay Inc.
+    You can (and we strongly suggest you do) run your own insight server.
+    For more information, head to https://github.com/bitpay/insight-api
+*/
 var $ = __webpack_require__(110);
 var bitcore = __webpack_require__(111);
 var jsSHA = __webpack_require__(225);
 __webpack_require__(226);
 var Main = /** @class */ (function () {
     function Main() {
-        this.network = "livenet";
         this._initlisten();
     }
     Main.prototype._makeKey = function (target, num) {
@@ -39826,27 +39833,46 @@ var Main = /** @class */ (function () {
             return this._makeKey(hash, num - 1);
         }
     };
-    Main.prototype._makeAddress = function (privkey) {
+    Main.prototype._makeAddress = function (privkey, network) {
         // 公開鍵作成
-        var privateKey = new bitcore.PrivateKey(privkey, this.network);
+        var privateKey = new bitcore.PrivateKey(privkey, network);
         var publicKey = privateKey.toPublicKey();
         // bitcoin アドレス作成
         var pubKey = publicKey;
-        var publicKey = new bitcore.PublicKey(pubKey, this.network);
+        var publicKey = new bitcore.PublicKey(pubKey, network);
         var address = publicKey.toAddress();
         var str_address = address.toString();
         return str_address;
     };
-    Main.prototype.text2bitcoin_address = function (text, num) {
+    Main.prototype.text2bitcoin_address = function (text, num, network) {
         var key = this._makeKey(text, num);
-        return [key, this._makeAddress(key)];
+        return [key, this._makeAddress(key, network)];
     };
+    /*
+        public check_asset(address, network){
+            //var insight = new explorers.Insight("https://test-insight.bitpay.com",network);
+            var insight = new explorers.Insight();
+            console.log(address);
+            insight.getUnspentUtxos(address, function(err, utxos) {
+                console.log("START");
+                if (err) {
+                    console.log("ERROR:check_asset");
+                    return "ERROR:check_asset"
+                } else {
+                    console.log("utxos");
+                    console.log(utxos);
+                    return utxos;
+                }
+            });
+        }
+    */
     Main.prototype._initlisten = function () {
         var me = this;
         $("#generate").on("click", function (event) {
             var key = $(".input_key").val();
             var num = $(".input_num").val();
-            var _a = me.text2bitcoin_address(key, Number(num)), priv_key = _a[0], address = _a[1];
+            var network = $('[name=network]').val();
+            var _a = me.text2bitcoin_address(key, Number(num), network), priv_key = _a[0], address = _a[1];
             $(".address").val(address);
             $(".priv_key").val(priv_key);
         });
@@ -50533,7 +50559,7 @@ module.exports = Array.isArray || function (arr) {
 /* 115 */
 /***/ (function(module, exports) {
 
-module.exports = {"_args":[["bitcore-lib@0.15.0","/Users/existy/work/git/y-existy.github.io"]],"_from":"bitcore-lib@0.15.0","_id":"bitcore-lib@0.15.0","_inBundle":false,"_integrity":"sha512-AeXLWhiivF6CDFzrABZHT4jJrflyylDWTi32o30rF92HW9msfuKpjzrHtFKYGa9w0kNVv5HABQjCB3OEav4PhQ==","_location":"/bitcore-lib","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"bitcore-lib@0.15.0","name":"bitcore-lib","escapedName":"bitcore-lib","rawSpec":"0.15.0","saveSpec":null,"fetchSpec":"0.15.0"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/bitcore-lib/-/bitcore-lib-0.15.0.tgz","_spec":"0.15.0","_where":"/Users/existy/work/git/y-existy.github.io","author":{"name":"BitPay","email":"dev@bitpay.com"},"browser":{"request":"browser-request"},"bugs":{"url":"https://github.com/bitpay/bitcore-lib/issues"},"dependencies":{"bn.js":"=4.11.8","bs58":"=4.0.1","buffer-compare":"=1.1.1","elliptic":"=6.4.0","inherits":"=2.0.1","lodash":"=4.17.4"},"description":"A pure and powerful JavaScript Bitcoin library.","devDependencies":{"bitcore-build":"git+https://github.com/bitpay/bitcore-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3","brfs":"^1.2.0","chai":"^1.10.0","gulp":"^3.8.10","sinon":"^1.13.0"},"homepage":"https://github.com/bitpay/bitcore-lib#readme","keywords":["bitcoin","transaction","address","p2p","ecies","cryptocurrency","blockchain","payment","bip21","bip32","bip37","bip69","bip70","multisig"],"license":"MIT","main":"index.js","name":"bitcore-lib","repository":{"type":"git","url":"git+https://github.com/bitpay/bitcore-lib.git"},"scripts":{"build":"gulp","coverage":"gulp coverage","lint":"gulp lint","test":"gulp test"},"version":"0.15.0"}
+module.exports = {"_from":"bitcore-lib@^0.15.0","_id":"bitcore-lib@0.15.0","_inBundle":false,"_integrity":"sha512-AeXLWhiivF6CDFzrABZHT4jJrflyylDWTi32o30rF92HW9msfuKpjzrHtFKYGa9w0kNVv5HABQjCB3OEav4PhQ==","_location":"/bitcore-lib","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"bitcore-lib@^0.15.0","name":"bitcore-lib","escapedName":"bitcore-lib","rawSpec":"^0.15.0","saveSpec":null,"fetchSpec":"^0.15.0"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/bitcore-lib/-/bitcore-lib-0.15.0.tgz","_shasum":"f924be13869f2aab7e04aeec5642ad3359b6cec2","_spec":"bitcore-lib@^0.15.0","_where":"/Users/existy/work/git/y-existy.github.io","author":{"name":"BitPay","email":"dev@bitpay.com"},"browser":{"request":"browser-request"},"bugs":{"url":"https://github.com/bitpay/bitcore-lib/issues"},"bundleDependencies":false,"dependencies":{"bn.js":"=4.11.8","bs58":"=4.0.1","buffer-compare":"=1.1.1","elliptic":"=6.4.0","inherits":"=2.0.1","lodash":"=4.17.4"},"deprecated":false,"description":"A pure and powerful JavaScript Bitcoin library.","devDependencies":{"bitcore-build":"git+https://github.com/bitpay/bitcore-build.git#d4e8b2b2f1e2c065c3a807dcb6a6250f61d67ab3","brfs":"^1.2.0","chai":"^1.10.0","gulp":"^3.8.10","sinon":"^1.13.0"},"homepage":"https://github.com/bitpay/bitcore-lib#readme","keywords":["bitcoin","transaction","address","p2p","ecies","cryptocurrency","blockchain","payment","bip21","bip32","bip37","bip69","bip70","multisig"],"license":"MIT","main":"index.js","name":"bitcore-lib","repository":{"type":"git","url":"git+https://github.com/bitpay/bitcore-lib.git"},"scripts":{"build":"gulp","coverage":"gulp coverage","lint":"gulp lint","test":"gulp test"},"version":"0.15.0"}
 
 /***/ }),
 /* 116 */
