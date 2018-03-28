@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "clean": "find -E ./app -regex '.+(js|map)$' -type f | xargs rm",
+    "build": "webpack --optimize-minimize",
+    "build_debug": "webpack",
     "postinstall": "tsd install",
     "pretest": "tsc",
     "test": "karma start"
