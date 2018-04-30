@@ -11,6 +11,7 @@ import * as bitcore from 'bitcore-lib';
 import * as explorers from 'bitcore-explorers';
 import * as jsSHA from 'jssha';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './css/base.css';
 
 export default class Main {
     constructor(){
@@ -28,6 +29,7 @@ export default class Main {
             return this._makeKey(hash, num - 1);
             }
         }
+
     private _makeAddress(privkey, network){
         // 公開鍵作成
             var privateKey = new bitcore.PrivateKey(privkey, network);
@@ -44,6 +46,14 @@ export default class Main {
     public text2bitcoin_address(text, num, network){
         var key = this._makeKey(text, num);
         return [key, this._makeAddress(key, network)];
+    }
+
+    private _makeQrcode(id, text) {
+        jQuery(id).empty();
+        jQuery(id).qrcode({
+            render	: "table",
+            text	: text
+        });
     }
 /*
     public check_asset(address, network){
@@ -71,7 +81,9 @@ export default class Main {
             let network = $('[name=network]').val();
             let [priv_key, address] = me.text2bitcoin_address(key, Number(num), network);
             $(".address").val(address);
+            me._makeQrcode("#address_qrcode", address);
             $(".priv_key").val(priv_key);
+            me._makeQrcode("#priv_key_qrcode", priv_key);
         });
     }
 }

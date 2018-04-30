@@ -32,6 +32,10 @@ export PKG_CONFIG_PATH=/usr/local/Cellar/zeromq/4.x.x/lib/pkgconfig/
 npm install zmq
 ```
 
+参考3:
+qrcodeを表示させるために以下を参考にした
+ref: <https://devadjust.exblog.jp/26233640/>
+
 - build等
 
 ```bash

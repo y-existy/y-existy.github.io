@@ -1,5 +1,7 @@
 node_modules
 app/**/*.js
-!app/src/bundle.js
 *js.map
 coverage
+
+!app/src/bundle.js
+!app/src/lib/*

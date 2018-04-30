@@ -13,7 +13,8 @@ module.exports = {
       rules: [
         // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
         {
-          test: /\.min\.css$/,
+          //test: /\.min\.css$/,
+          test: /\.css$/,
           use: [
             'style-loader',
             {loader: 'css-loader', options: {url: false}}
