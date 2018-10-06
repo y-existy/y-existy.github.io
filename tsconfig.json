@@ -4,7 +4,10 @@
     "module": "commonjs",
     "target": "es5",
     "sourceMap": true,
-    "outDir": "app"
+    "outDir": "app",
+    "lib":[
+      "es2015"
+    ]
   },
   "exclude": [
     "dist",
