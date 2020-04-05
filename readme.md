@@ -1,7 +1,7 @@
 # これ何？
 
 - bitcoin address生成のお試しプロジェクト
-- link: <https://y-existy.github.io/app/index>
+- link: <https://y-existy.github.io/bitcoin-address/app/index>
 
 - テストまで含んだ初期プロジェクト状態
 新しいtsファイルを追加した場合はtsconfig.jsonに追加すること
