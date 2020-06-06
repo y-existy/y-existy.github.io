@@ -1,8 +1,15 @@
-# これ何？
+# 適当なもの置き場
+- ほぼ自分用のメモ
 
-- bitcoin address生成のお試しプロジェクト
+## 麻雀計算表
+- link: <https://y-existy.github.io/mahjong_calc/index>
+- 自分の成績をcsvで保管するために作成。
+- redisに保管することも可能で、hash付きURLを発行し多人数で共有することも可能にした。が、当然github上では動かない。
+- csvDL機能は健在なので、使えなくもない
+
+## bitcoin アドレス作成
 - link: <https://y-existy.github.io/bitcoin-address/app/index>
-
+- bitcoin address生成のお試しプロジェクト. 詳細は下記.
 - テストまで含んだ初期プロジェクト状態
 新しいtsファイルを追加した場合はtsconfig.jsonに追加すること
 
