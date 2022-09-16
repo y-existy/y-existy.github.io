@@ -40,7 +40,7 @@
   "dependencies": {
     "bitcore-explorers": "^1.0.1",
     "bitcore-lib": "^0.15.0",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.28.10",
     "jquery": "^3.3.1",
