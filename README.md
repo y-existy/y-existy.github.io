@@ -1,6 +1,11 @@
 # 適当なもの置き場
 - ほぼ自分用のメモ
 
+## snippet inserter
+- link: <https://github.com/y-existy/snippet-inserter>
+- vscodeのアドイン。ほぼchat GPT-4で作った。
+- 自分で管理するフォルダのファイルから指定した文字列の間をsnippetとして現在のファイルに挿入できる。
+
 ## 麻雀計算表
 - link: <https://y-existy.github.io/mahjong_calc/index>
 - 自分の成績をcsvで保管するために作成。
@@ -53,32 +58,3 @@ npm run test
 #  (ビルドしたファイル等を削除、カスタマイズの余地はありそう)
 npm run clean
 ```
-
-----
-
-## ref: <http://blog.syati.info/post/typescript_coverage/>
-
-# 011 test sample
-
-- Test framework
-  - mocha
-- Coverage
-  - istanbul
-  - remap-istanbul
-
-## Getting started
-
-```sh
-# install library
-$ npm install
-
-# Run test
-$ npm test
-
-# Open coverage/html-report/index.html
-```
-
-
-##  Reference
-
-https://github.com/jonnyreeves/hello-ts-mocha
